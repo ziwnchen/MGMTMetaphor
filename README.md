@@ -22,7 +22,7 @@ The project is structured into the following stages:
 
 2. **Feature Generation**
    - **explicit:** Generates features for the explicit measurement.
-   - **fillmask:** Generates features for the implicit measurement.
+   - **implicit:** Generates features for the implicit measurement.
 
 3. **Pooling**
    - **dataset_to_export_trend:** Combines data from all corpora to create the final dataset for trend analysis.
@@ -30,7 +30,7 @@ The project is structured into the following stages:
 
 4. **Trend Analysis**
    - **explicit_plot:** Plots the historical trend of explicit management metaphors.
-   - **fillmask_plot:** Plots the historical trend of implicit management metaphors.
+   - **implicit_plot:** Plots the historical trend of implicit management metaphors.
 
 5. **Agent Analysis**
    - Includes Stata commands for running marginal effect analysis.
