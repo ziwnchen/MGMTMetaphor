@@ -1,0 +1,39 @@
+{
+    "nyt": {
+        "if_csv": false,
+        "model_path": "/home/ec2-user/SageMaker/data/PB_MultiClass_Full_Oct30/",
+        "batch_size": 100,
+        "data_paths": {"/home/ec2-user/SageMaker/data/NYT-manage-01-20_processed":["mgmt_sents_review_wsd.pkl"],
+                        "/home/ec2-user/SageMaker/data/NYT-manage-50-00_processed":["mgmt_sents_review_wsd.pkl"]},
+        "processed_paths": {"/home/ec2-user/SageMaker/data/NYT-manage-01-20_processed":["mgmt_sents_review_wsd_pb_classified.pkl"],
+                        "/home/ec2-user/SageMaker/data/NYT-manage-50-00_processed":["mgmt_sents_review_wsd_pb_classified.pkl"]}
+    },
+    "fiction": {
+        "if_csv": false,
+        "model_path": "/home/f9b9466/data/BERT/PB_MultiClass_Full_Oct30/",
+        "batch_size": 100,
+        "data_paths": {"/home/f9b9466/codeReviewData/":["fiction_mgmt_sent_wsd.pkl"]},
+        "processed_paths": {"/home/f9b9466/codeReviewData/" : ["fiction_mgmt_sent_wsd_pb_classified.pkl"]}
+    },
+    "congress": {
+        "if_csv": true,
+        "model_path": "/zfs/projects/faculty/amirgo-management/BERT/PB_MultiClass_Full_Oct30/",
+        "batch_size": 100,
+        "data_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/congress/":["congress_mgmt_sent_wsd.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/congress/":["congress_mgmt_sent_wsd_pb_classified.csv"]}
+    },
+    "movie": {
+        "if_csv": true,
+        "model_path": "/zfs/projects/faculty/amirgo-management/BERT/PB_MultiClass_Full_Oct30/",
+        "batch_size": 100,
+        "data_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/movie/":["movie_mgmt_sent_wsd.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/movie/":["movie_mgmt_sent_wsd_pb_classified.csv"]}
+    },
+    "caselaw": {
+        "if_csv": true,
+        "model_path": "/zfs/projects/faculty/amirgo-management/BERT/PB_MultiClass_Full_Oct30/",
+        "batch_size": 100,
+        "data_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/caselaw/total/":["caselaw_mgmt_sent_wsd.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/caselaw/total/":["caselaw_mgmt_sent_wsd_pb_classified.csv"]}
+    }
+}

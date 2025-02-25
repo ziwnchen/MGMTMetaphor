@@ -1,0 +1,17 @@
+{
+    "wsd":{"Intransitive":0,
+            "Transitive":1},
+    "pb_primary":{"Personal": 0,
+                "Business":1},
+    "pb_secondary":{"Others": 0,
+                    "Financials": 1,
+                    "Emotion and subjective experiences": 2,
+                    "Human body": 3,
+                    "Household": 4,
+                    "Family": 5,
+                    "Time": 6,
+                    "Romantic relationships": 7,
+                    "Friendship": 8,
+                    "Business Operations": 9,
+                    "Not Classified (Intransitive Verb or Low Confidence)": 999}
+}

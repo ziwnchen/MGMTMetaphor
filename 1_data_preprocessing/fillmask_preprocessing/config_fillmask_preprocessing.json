@@ -1,0 +1,70 @@
+{
+    "nyt": {
+        "text_col": "Text",
+        "doc_id":"GOID",
+        "ncores": 8,
+        "nchunks": 5000,
+        "data_paths": {"/home/ec2-user/SageMaker/data/NYT-private-50-67_processed/":["fulltext_v0.csv", "fulltext_v1.csv", "fulltext_v2.csv", "fulltext_v3.csv"],
+                        "/home/ec2-user/SageMaker/data/NYT-private-68-80_processed/":["fulltext_v0.csv", "fulltext_v1.csv", "fulltext_v2.csv"],
+                        "/home/ec2-user/SageMaker/data/NYT-private-81-85_processed/":["fulltext_v0.csv", "fulltext_v1.csv"],
+                        "/home/ec2-user/SageMaker/data/NYT-private-86-97_processed/":["fulltext_v0.csv", "fulltext_v1.csv", "fulltext_v2.csv", "fulltext_v3.csv"],
+                        "/home/ec2-user/SageMaker/data/NYT-private-98-05_processed/":["fulltext_v0.csv", "fulltext_v1.csv", "fulltext_v2.csv", "fulltext_v3.csv"],
+                        "/home/ec2-user/SageMaker/data/NYT-private-06-19_processed/":["fulltext_v0.csv", "fulltext_v1.csv", "fulltext_v2.csv", "fulltext_v3.csv"]},
+        "processed_paths": {"/home/ec2-user/SageMaker/data/NYT-private-50-67_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl", "priv_obj_sent_2.pkl", "priv_obj_sent_3.pkl"],
+                            "/home/ec2-user/SageMaker/data/NYT-private-68-80_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl", "priv_obj_sent_2.pkl"],
+                            "/home/ec2-user/SageMaker/data/NYT-private-81-85_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl"],
+                            "/home/ec2-user/SageMaker/data/NYT-private-86-97_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl", "priv_obj_sent_2.pkl", "priv_obj_sent_3.pkl"],
+                            "/home/ec2-user/SageMaker/data/NYT-private-98-05_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl", "priv_obj_sent_2.pkl", "priv_obj_sent_3.pkl"],
+                            "/home/ec2-user/SageMaker/data/NYT-private-06-19_processed/":["priv_obj_sent_0.pkl", "priv_obj_sent_1.pkl", "priv_obj_sent_2.pkl", "priv_obj_sent_3.pkl"]}
+    },
+    "fiction": {
+        "text_col": "text",
+        "doc_id":"filename",
+        "ncores": 10,
+        "nchunks": 1000,
+        "data_paths": {"/media/secure_volume/RawText/":["workset1_chunk0.csv", "workset1_chunk1.csv", "workset1_chunk2.csv",
+                                                        "workset2_chunk0.csv", "workset2_chunk1.csv", "workset2_chunk2.csv",
+                                                        "workset3_chunk0.csv", "workset3_chunk1.csv", "workset3_chunk2.csv",
+                                                        "workset4_chunk0.csv", "workset4_chunk1.csv", "workset4_chunk2.csv",
+                                                        "workset5_chunk0.csv", "workset5_chunk1.csv", "workset5_chunk2.csv",
+                                                        "workset6_chunk0.csv", "workset6_chunk1.csv", "workset6_chunk2.csv",
+                                                        "workset7_chunk0.csv", "workset7_chunk1.csv", "workset7_chunk2.csv"]},
+        "processed_paths": {"/media/secure_volume/codeReviewData/" : ["workset1_chunk0_priv_obj_sent.pkl", "workset1_chunk1_priv_obj_sent.pkl", "workset1_chunk2_priv_obj_sent.pkl",
+                                                                    "workset2_chunk0_priv_obj_sent.pkl", "workset2_chunk1_priv_obj_sent.pkl", "workset2_chunk2_priv_obj_sent.pkl",
+                                                                    "workset3_chunk0_priv_obj_sent.pkl", "workset3_chunk1_priv_obj_sent.pkl", "workset3_chunk2_priv_obj_sent.pkl",
+                                                                    "workset4_chunk0_priv_obj_sent.pkl", "workset4_chunk1_priv_obj_sent.pkl", "workset4_chunk2_priv_obj_sent.pkl",
+                                                                    "workset5_chunk0_priv_obj_sent.pkl", "workset5_chunk1_priv_obj_sent.pkl", "workset5_chunk2_priv_obj_sent.pkl",
+                                                                    "workset6_chunk0_priv_obj_sent.pkl", "workset6_chunk1_priv_obj_sent.pkl", "workset6_chunk2_priv_obj_sent.pkl",
+                                                                    "workset7_chunk0_priv_obj_sent.pkl", "workset7_chunk1_priv_obj_sent.pkl", "workset7_chunk2_priv_obj_sent.pkl"]},
+        "if_concat": true,
+        "concat_path": "/media/secure_volume/codeReviewData/fiction_priv_obj_sent.pkl"
+    },
+    "congress": {
+        "text_col": "speech",
+        "doc_id":"speech_id",
+        "ncores": 20,
+        "nchunks": 1000,
+        "data_paths": {"/zfs/projects/faculty/amirgo-management/congress/speeches_processed/":["congress_total_sent.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/congress/":["congress_priv_obj_sent.pkl"]}
+    },
+    "movie": {
+        "text_col": "sentences",
+        "doc_id":"imdbID",
+        "ncores": 20,
+        "nchunks": 1000,
+        "data_paths": {"/zfs/projects/faculty/amirgo-management/opus/processed/":["total_parsed_df.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/movie/":["movie_priv_obj_sent.pkl"]}
+    },
+    "caselaw": {
+        "text_col": "sentence_tokenized",
+        "doc_id":"case_id",
+        "ncores": 20,
+        "nchunks": 1000,
+        "data_paths":{"/zfs/projects/faculty/amirgo-management/caselaw/raw/Paul_Data/states/":["cases_2010s.csv","cases_2000s.csv","cases_1990s.csv","cases_1980s.csv","cases_1970s.csv","cases_1960s.csv"],
+                        "/zfs/projects/faculty/amirgo-management/caselaw/raw/Paul_Data/":["cases_2010s.csv","cases_2000s.csv","cases_1990s.csv","cases_1980s.csv","cases_1970s.csv","cases_1960s.csv","cases_1950s.csv"]},
+        "processed_paths": {"/zfs/projects/faculty/amirgo-management/code_review_data/caselaw/state/": ["state_2010s_priv_obj_sent.pkl", "state_2000s_priv_obj_sent.pkl", "state_1990s_priv_obj_sent.pkl", "state_1980s_priv_obj_sent.pkl", "state_1970s_priv_obj_sent.pkl", "state_1960s_priv_obj_sent.pkl"],
+                            "/zfs/projects/faculty/amirgo-management/code_review_data/caselaw/federal/": ["federal_2010s_priv_obj_sent.pkl", "federal_2000s_priv_obj_sent.pkl", "federal_1990s_priv_obj_sent.pkl", "federal_1980s_priv_obj_sent.pkl", "federal_1970s_priv_obj_sent.pkl", "federal_1960s_priv_obj_sent.pkl", "federal_1950s_priv_obj_sent.pkl"]},
+        "if_concat": true,
+        "concat_path": "/zfs/projects/faculty/amirgo-management/code_review_data/caselaw/total/caselaw_priv_obj_sent.pkl"
+    }
+}
