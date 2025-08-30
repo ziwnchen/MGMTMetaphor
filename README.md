@@ -37,4 +37,17 @@ The project is structured into the following stages:
 
 Additionally, this repository provides the code and data used to train the classifiers employed during the feature generation process.
 
----
+## Data Availability
+The project uses five historical text corpora:
+- New York Times Articles: The corpora could be accessed via [ProQuest TDM Studio](https://www.proquest.com/products-services/tdm-studio.html).
+- Fiction: The corpora could be accessed via [HathiTrust Research Center Analytics](https://analytics.hathitrust.org/)
+- Movie Scripts: The **publicly available** corpora is downloaded from [OpenSubtitles dataset](https://opus.nlpl.eu/OpenSubtitles/corpus/version/OpenSubtitles). At the time of analysis, we use the 2018 version.
+- Congressional Speeches: The **publicly available** dataset is downloaded from [Stanford Congress Text](https://data.stanford.edu/congress_text) curated by Gentzkow, Matthew, Jesse M. Shapiro, and Matt Taddy.
+- Caselaw Opinions: The **publicly available** dataset is downloaded from [Caselaw Access Project](https://case.law/).
+
+We also use one contemporary interview corpus:
+- American Voice Project: https://americanvoicesproject.org/
+
+Since some of the datasets are not publicly available, we provide access to the processed data used in our analysis through Google Drive:
+https://drive.google.com/drive/folders/1ax3ICXA-8wEhVifqo9ZN1cBL5Y2sAeFQ?usp=sharing
+Specifically, the "pooling" folder contains the processed data after the pooling stage, which can be used for trend and agent analysis. The "agent" folder contains results from marginal effect analysis which was used directly to produce the figures in the paper.

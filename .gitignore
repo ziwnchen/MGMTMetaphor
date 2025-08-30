@@ -1,5 +1,20 @@
 # ignore gitignore itself
 .gitignore
 
-data_curation/
-wiki_matching/
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp

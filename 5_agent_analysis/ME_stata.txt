@@ -1,7 +1,10 @@
-# Explicit
+# Marginal Effect analysis of Explicit Measurement
 import delimited "/zfs/projects/faculty/amirgo-management/code_review_data/pooling/explicit_agent.csv", clear
 
-## create dummy codings
+# set current wd
+cd “/zfs/projects/faculty/amirgo-management/code_review_data/agent”
+
+# create dummy codings
 encode gender, gen(gender_numeric)
 encode party, gen(party_numeric)
 encode if_college_ed , gen( if_college_ed_numeric )
@@ -9,35 +12,49 @@ encode if_business_ed , gen( if_business_ed_numeric )
 encode if_business_occupation , gen( if_business_occupation_numeric )
 encode dataset, gen(dateset_numeric)
 
-##gender
+# gender
 regress isperson i.gender_numeric##i.decade c.age i.if_college_ed_numeric i.if_business_occupation_numeric i.dateset_numeric if (gender=="female" | gender=="male"), vce(cluster doc_id)
-margins decade#gender_numeric
-marginsplot
+collect clear
+collect:  margins decade#gender_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_explicit_gender.xlsx", replace
 
-##age
-recode age (min/29 = 1 "20s or younger") (30/39 = 2 "30s") (40/49 = 3 "40s") (50/59 = 4 "50s") (60/69 = 5 "60s") (70/. = 6 "70s or older"), generate(age_bin)
+# age
+recode age (min/39 = 1 "≤30s") (40/69 = 2 "40s-60s")(70/. = 3 "≥70s"), generate(age_bin)
 tabulate age_bin
 regress isperson i.age_bin##i.decade i.gender_numeric i.if_college_ed_numeric i.if_business_occupation_numeric i.dateset_numeric if (age>=20 & age<=100), vce(cluster doc_id)
-margins decade#age_bin
-marginsplot
+collect clear
+collect: margins decade#age_bin
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_explicit_age.xlsx", replace
 
-## college
+# college
 regress isperson i.if_college_ed_numeric##i.decade i.gender_numeric c.age i.if_business_occupation_numeric i.dateset_numeric  if (if_college_ed !="Missing"), vce(cluster doc_id)
-margins decade#if_college_ed_numeric
-marginsplot
+collect clear
+collect: margins decade#if_college_ed_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_explicit_college.xlsx", replace
 
-## business education
+# bus ed
 regress isperson i.if_business_ed_numeric##i.decade i.gender_numeric c.age i.if_business_occupation_numeric i.dateset_numeric  if (if_business_ed!="Missing"), vce(cluster doc_id)
-margins decade#if_business_ed_numeric
-marginsplot
+collect clear
+collect: margins decade#if_business_ed_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_explicit_bused.xlsx", replace
 
-# business occupation
+# bus job
 regress isperson i.if_business_occupation_numeric##i.decade i.gender_numeric c.age i.if_college_ed_numeric i.dateset_numeric  if (if_business_occupation!="Missing"), vce(cluster doc_id)
-margins decade#if_business_occupation_numeric
-Marginsplot
+collect clear
+collect: margins decade#if_business_occupation_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_explicit_busjob.xlsx", replace
 
-# Implicit
+
+
+# Marginal Effect analysis of Implicit Measurement
 import delimited "/zfs/projects/faculty/amirgo-management/code_review_data/pooling/implicit_agent.csv", clear
+
+cd “/zfs/projects/faculty/amirgo-management/code_review_data/agent”
 
 encode gender, gen(gender_numeric)
 encode party, gen(party_numeric)
@@ -47,30 +64,41 @@ encode if_business_occupation , gen( if_business_occupation_numeric )
 encode object_category, gen(object_category_numeric)
 encode dataset, gen(dataset_numeric)
 
-## gender
+# gender
 regress subgroup_orig_syn_ratio i.gender_numeric##i.decade c.age i.if_college_ed_numeric i.if_business_occupation_numeric i.object_category_numeric i.dataset_numeric if (gender=="male"|gender=="female"), vce(cluster doc_id)
-margins decade#gender_numeric
-marginsplot
+collect clear
+collect:  margins decade#gender_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_implicit_gender.xlsx", replace
 
-## age
-recode age (min/29 = 1 "20s or younger") (30/39 = 2 "30s") (40/49 = 3 "40s") (50/59 = 4 "50s") (60/69 = 5 "60s") (70/. = 6 "70s or older"), generate(age_bin)
+# age
+recode age (min/39 = 1 "≤30s") (40/69 = 2 "40s-60s")(70/. = 3 "≥70s"), generate(age_bin)
 tabulate age_bin
-regress subgroup_orig_syn_ratio i.age_bin##i.decade i.gender_numeric i.if_college_ed_numeric i.if_business_occupation_numeric i.object_category_numeric i.dateset_numeric if (age>=20 & age<=100), vce(cluster doc_id)
-margins decade#age_bin
-marginsplot
+regress subgroup_orig_syn_ratio i.age_bin##i.decade i.gender_numeric i.if_college_ed_numeric i.if_business_occupation_numeric i.object_category_numeric i.dataset_numeric if (age>=20 & age<=100), vce(cluster doc_id)
+collect clear
+collect: margins decade#age_bin
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_implicit_age.xlsx", replace
 
-## college 
+# college edu
 regress subgroup_orig_syn_ratio i.if_college_ed_numeric##i.decade c.age i.gender_numeric i.if_business_occupation_numeric i.object_category_numeric i.dataset_numeric if if_college_ed!=“Missing” , vce(cluster doc_id)
 margins decade#if_college_ed_numeric
-marginsplot
+collect clear
+collect: margins decade#if_college_ed_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_implicit_college.xlsx", replace
 
-# business education
+# biz edu
 regress subgroup_orig_syn_ratio i.if_business_ed_numeric##i.decade c.age i.gender_numeric i.if_business_occupation_numeric i.object_category_numeric i.dataset_numeric if if_business_ed !="Missing" , vce(cluster doc_id)
-margins decade#if_business_ed_numeric 
-marginsplot
+collect clear
+collect: margins decade#if_business_ed_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_implicit_bused.xlsx", replace
 
 
-# business occupation
+# biz career
 regress subgroup_orig_syn_ratio i.if_business_occupation_numeric##i.decade c.age i.gender_numeric i.if_college_ed_numeric i.object_category_numeric i.dataset_numeric if if_business_occupation !="Missing" , vce(cluster doc_id)
-margins decade#if_business_occupation_numeric 
-marginsplot
+collect clear
+collect: margins decade#if_business_occupation_numeric
+collect layout (colname) (result[_r_b _r_se _r_lb _r_ub _r_p _r_df _N])
+collect export "margins_implicit_busjob.xlsx", replace
