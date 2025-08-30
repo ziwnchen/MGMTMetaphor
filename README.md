@@ -44,3 +44,26 @@ We also use one contemporary interview corpus:
 Since some of the datasets are not publicly available, we provide access to the processed data used in our analysis through Google Drive:
 https://drive.google.com/drive/folders/1ax3ICXA-8wEhVifqo9ZN1cBL5Y2sAeFQ?usp=sharing
 Specifically, the "pooling" folder contains the processed data after the pooling stage, which can be used for trend and agent analysis. The "agent" folder contains results from marginal effect analysis which was used directly to produce the figures in the paper.
+
+## Software Requirements
+To run the code in this repository, you will need the following software (typical installation time < 1 hour):
+
+- Python 3.8 or higher
+- The following Python packages:
+  - pandas
+  - numpy
+  - tqdm
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - nltk
+  - spacy
+  - transformers
+  - accelerate
+  - torch
+
+For Marginal Effect Analysis:
+- Stata MP 18
+
+## Time Commitment
+The time needed to reproduce the trend plots is approximately 1 hours, while the agent analysis (including Stata commands) may take an additional 2-3 hours.
